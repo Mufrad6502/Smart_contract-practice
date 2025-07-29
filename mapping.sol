@@ -26,4 +26,5 @@ contract MappingTest{
         // Check if the balances are different
         require(balances[addr1] != balances[addr2], "Balances should be different");
 
+    }
 }
