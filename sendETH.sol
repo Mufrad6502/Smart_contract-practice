@@ -12,3 +12,11 @@ function sendETHTransfer(address payable _to, uint256 _amount) public {
         _to.transfer(_amount);
     }
 }
+
+contract EthReceiver{
+    event Log(uint amount , uint gas);
+    
+    receive() external payable {
+        emit Log(msg.value, gasleft());
+    }
+} 
