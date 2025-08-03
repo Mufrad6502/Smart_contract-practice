@@ -10,8 +10,11 @@ contract ETHWallet {
     }
     receive () external payable {
     }
-
-    function withdraw(uint _amount) external {
+    modifier onlyOwner(){
+        require (msg.sender ==owner, "caller is not owner");
+        _;
+    }
+    function withdraw(uint _amount) external onlyOwner(){
         require (msg.sender ==owner, "caller is not owner");
         payable(msg.sender).transfer(_amount);
     }
